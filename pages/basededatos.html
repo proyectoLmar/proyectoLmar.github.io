@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de datos</title>
+    <link rel="stylesheet" href="/styles/css.css">
+</head>
+<body>
+        <header>
+            <h1>Base de Datos</h1>
+            <nav>
+                <a href="../index.html">Inicio</a>
+                <a href="/pages/basededatos.html" class="aqui">Base de datos</a>
+                <a href="/pages/lenguajes.html">Lenguaje de marcas</a>
+                </nav>
+        </header>
+        <div class="content">
+        <main>
+            <section>
+                <h2>¿Qué es una Base de Datos?</h2>
+                <p>Una base de datos es un conjunto organizado de datos que se almacenan y gestionan de manera eficiente. Se utiliza para almacenar información estructurada y permitir su recuperación y manipulación.</p>
+            </section>
+            <section>
+                <h2>Pasos para Crear una Base de Datos:</h2>
+                <ol>
+                    <li>Planificación y diseño: Antes de crear una base de datos, define los requisitos y estructura de tus datos.</li>
+                    <li>Selecciona una herramienta: Puedes utilizar sistemas de gestión de bases de datos como MySQL, PostgreSQL o MongoDB.</li>
+                    <li>Creación de tablas: Diseña las tablas y define las relaciones entre ellas.</li>
+                    <li>Operaciones CRUD: Aprende a realizar operaciones de Crear, Leer, Actualizar y Eliminar datos en tu base de datos.</li>
+                </ol>
+            </section>
+            <section>
+                <h2>Recursos Adicionales:</h2>
+                <ul>
+                    <li><a href="https://www.mysql.com/" target="_blank" class="enlace">MySQL</a>: Sistema de gestión de bases de datos relacional.</li>
+                    <li><a href="https://www.postgresql.org/" target="_blank" class="enlace">PostgreSQL</a>: Base de datos de código abierto y potente.</li>
+                    <li><a href="https://www.mongodb.com/" target="_blank" class="enlace">MongoDB</a>: Base de datos NoSQL orientada a documentos.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Esquema entidad-relación</h2>
+                <ol>
+                    <li><b>Identificar la Entidad:</b> Determina cuál es la entidad principal de la tabla. Una entidad representa un objeto del mundo real que tiene importancia para el sistema que estás modelando. Por ejemplo, en una base de datos de estudiantes, una entidad podría ser Estudiante.</li><br>
+                    <li><b>Definir los Atributos:</b> Lista los atributos de la entidad. Los atributos son las propiedades o características que describen la entidad. Por ejemplo, para la entidad Estudiante, los atributos podrían ser ID_Estudiante, Nombre, Apellido, Fecha_Nacimiento, y Email.</li><br>
+                    <li><b>Establecer la Clave Primaria:</b> Identifica el atributo o conjunto de atributos que sirven como identificador único para cada instancia de la entidad. En el ejemplo de Estudiante, el atributo ID_Estudiante podría ser la clave primaria.</li><br>
+                    <li><b>Determinar las Relaciones:</b> Si la tabla está relacionada con otras tablas, identifica las relaciones. Las relaciones pueden ser uno a uno, uno a muchos o muchos a muchos. Por ejemplo, si un estudiante puede estar inscrito en varios cursos, y un curso puede tener varios estudiantes, habría una relación muchos a muchos entre Estudiante y Curso.</li><br>
+                    <li><b>Crear el Diagrama ER:</b> Usa un software de diagramación (como Microsoft Visio, Lucidchart, o una herramienta de diagramas ER específica) para dibujar el diagrama. Representa la entidad como un rectángulo. Lista los atributos dentro del rectángulo. Marca la clave primaria subrayando el atributo correspondiente. Dibuja líneas para representar las relaciones con otras entidades, usando notación adecuada.</li><br>
+                </ol>
+            </section>
+            <section>
+                <h2>Creación de tablas</h2>
+                
+                <ol>
+                    <li><b>Crear la tabla: </b>Para crear una tabla, utiliza el comando CREATE TABLE, seguido del nombre de la tabla y la definición de sus columnas. Cada columna se define con un nombre, un tipo de datos y, opcionalmente, restricciones (como si es una clave primaria, si puede ser nula, etc.).</li>
+                    <br><li><b>Definir las columnas: </b>Las columnas deben tener un tipo de dato adecuado según el tipo de información que almacenarán.(Int para numeros entero, varchar para texto, date para fechas...)</li>
+                </ol>
+                <p><b>Ejemplo: </b>Supongamos que quieres crear una tabla llamada Estudiantes que almacene el ID del estudiante, su nombre, apellido, fecha de nacimiento y email. El ID del estudiante será la clave primaria.</p>
+                <div class="codigo"><p>CREATE TABLE Estudiantes ( <br>
+                    ID_Estudiante INT PRIMARY KEY,<br>
+                    Nombre VARCHAR(50) NOT NULL,<br>
+                    Apellido VARCHAR(50) NOT NULL,<br>
+                    Fecha_Nacimiento DATE,<br>
+                    Email VARCHAR(100)<br>
+                );</p>
+                </div>
+            </section>
+            <section>
+                <h2>Consultas</h2>
+                <ol>
+                    <li><b>Agregar condiciones</b> Puedes agregar condiciones a tu consulta utilizando la cláusula WHERE. Esto filtra los resultados basados en una condición específica.
+                        <div class="codigo"><p>SELECT campo1, campo2 FROM tabla WHERE condicion;</p></div>
+                    </li>
+                    <li><b>Ordenar los resultados</b> Puedes ordenar los resultados de tu consulta utilizando la cláusula ORDER BY. Esto te permite especificar un campo y un orden (ascendente o descendente).
+                        <div class="codigo"><p>SELECT campo1, campo2 FROM tabla ORDER BY campo ASC</p></div>
+                    </li>
+                </ol>
+                <p><b>Ejemplo: </b>Supongamos que tienes una tabla llamada Empleados con campos ID, Nombre, Apellido y Salario, y quieres obtener los nombres y apellidos de todos los empleados cuyo salario sea superior a 5000:</p>
+                <div class="codigo"><p>SELECT Nombre, Apellido FROM Empleados WHERE Salario > 5000;</p></div>
+            </section>
+            <section>
+                <h2>Joins</h2>
+                <p>Los joins en SQL se utilizan para combinar filas de dos o más tablas basadas en una columna relacionada entre ellas. Esto es útil para recuperar datos que están distribuidos en múltiples tablas en una base de datos relacional.</p>
+                <ul>
+                    <li><b>INNER JOIN:</b> Devuelve filas con coincidencias en ambas tablas.</li>
+                    <br><li><b>LEFT JOIN:</b> Devuelve todas las filas de la tabla izquierda y coincidencias de la derecha.</li>
+                    <br><li><b>RIGHT JOIN:</b> Devuelve todas las filas de la tabla derecha y coincidencias de la izquierda.</li>
+                    <br><li><b>FULL JOIN:</b> Devuelve filas con coincidencias en una de las tablas, completando con NULL donde no hay coincidencias.</li>
+                    <br><li><b>CROSS JOIN:</b> Devuelve el producto cartesiano de las tablas.</li>
+                    <br><li><b>SELF JOIN:</b> Une una tabla consigo misma.</li>
+                    <br><li><b>NATURAL JOIN:</b> Une las tablas basándose en columnas con el mismo nombre.</li>
+                </ul>
+                <div class="fotoNormal"><img src="/img/join.png"/></div>
+            </section>
+        </main>
+        </div>
+        <footer>
+            <a href="/rss/rss.xml"><img src="/img/rss.png" class="imgfooter"></a>
+            <a href="/rss/atom.xml"><img src="/img/atom.jpg" class="imgfooter"></a>
+        </footer>
+</body>
+</html>
